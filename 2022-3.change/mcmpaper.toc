@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {section}{\numberline {2}Problem Assumptions}{5}{section.2}%
+\contentsline {section}{\numberline {3}Symbol Description}{6}{section.3}%
+\contentsline {section}{\numberline {4}Problem Analysis}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Analysis of Question 1}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Analysis of Question 2}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Analysis of Question 3}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Analysis of question 4}{7}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Model Estimating and Solving of Problem 1 }{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Data Preprocessing}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Data Analysis}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Summary of Data Analysis}{14}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Model Estimating and Solving of Problem 2}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Profit Model of Third-party Payment Platform}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Expenditure Patterns of Third-party Payment Platforms}{17}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Profit model of third-party payment platform in public transportation system}{18}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}The Establishment of the Business Profit Mathematical Model of the Third-party Payment Platform}{18}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Quantitative analysis of profit mathematical model model}{21}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}Quantitative analysis of total revenue $I_0$}{21}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Quantitative analysis of total expenditure $O_{1}$}{22}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}Quantitative Analysis of Total Profit $W_0$}{23}{subsubsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.4}Exact Calculation of Mathematical Model}{26}{subsubsection.6.5.4}%
+\contentsline {subsubsection}{\numberline {6.5.5}Analysis of Profit Mathematical Model of Third-party Payment Platform}{26}{subsubsection.6.5.5}%
+\contentsline {section}{\numberline {7}The Establishment and Solution of the Model of Question 3}{27}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Overall Analysis}{27}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Analysis of the Current Situation of the Problem-occupancy Rate}{28}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Aggregate Method --- Innovation Diffusion Model}{29}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Disaggregated Methods --- Discrete Choice Models}{30}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Solving Results}{33}{subsection.7.5}%
+\contentsline {section}{\numberline {8}The Solution for the Fourth Question}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Business Feasibility Report of Third-party Mobile Payment Platform}{33}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Evaluation and Promotion of the Model}{34}{section.9}%
+\contentsline {section}{\bfseries 10\hskip 1em\relax Reference}{34}{section*.8}%

@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{from} \PYG{n+nn}{numpy} \PYG{k+kn}{import} \PYG{o}{*}
+  \PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+
+  \PYG{k}{def} \PYG{n+nf}{loadDataSet}\PYG{p}{(}\PYG{n}{fileName}\PYG{p}{):}
+      \PYG{n}{dataMat} \PYG{o}{=} \PYG{p}{[]}
+      \PYG{n}{fr} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{fileName}\PYG{p}{)}
+      \PYG{k}{for} \PYG{n}{line} \PYG{o+ow}{in} \PYG{n}{fr}\PYG{o}{.}\PYG{n}{readlines}\PYG{p}{():}
+          \PYG{n}{curLine} \PYG{o}{=} \PYG{n}{line}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+          \PYG{n}{fltLine} \PYG{o}{=} \PYG{n+nb}{map}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{,} \PYG{n}{curLine}\PYG{p}{)}
+          \PYG{n}{dataMat}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{fltLine}\PYG{p}{)}
+      \PYG{k}{return} \PYG{n}{dataMat}
+
+  \PYG{k}{def} \PYG{n+nf}{distEclud}\PYG{p}{(}\PYG{n}{vecA}\PYG{p}{,} \PYG{n}{vecB}\PYG{p}{):}
+      \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{power}\PYG{p}{(}\PYG{n}{vecA} \PYG{o}{\PYGZhy{}} \PYG{n}{vecB}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{)))}
+
+  \PYG{k}{def} \PYG{n+nf}{randCent}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{,} \PYG{n}{k}\PYG{p}{):}
+      \PYG{n}{n} \PYG{o}{=} \PYG{n}{shape}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{p}{]}
+      \PYG{n}{centroids} \PYG{o}{=} \PYG{n}{mat}\PYG{p}{(}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{k}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)))}
+      \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+          \PYG{n}{minJ} \PYG{o}{=} \PYG{n+nb}{min}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{[:,}\PYG{n}{j}\PYG{p}{])}
+          \PYG{n}{maxJ} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{[:,}\PYG{n}{j}\PYG{p}{])}
+          \PYG{n}{rangeJ} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{maxJ} \PYG{o}{\PYGZhy{}} \PYG{n}{minJ}\PYG{p}{)}
+          \PYG{n}{centroids}\PYG{p}{[:,}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{minJ} \PYG{o}{+} \PYG{n}{rangeJ} \PYG{o}{*} \PYG{n}{random}\PYG{o}{.}\PYG{n}{rand}\PYG{p}{(}\PYG{n}{k}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+      \PYG{k}{return} \PYG{n}{centroids}
+
+  \PYG{k}{def} \PYG{n+nf}{kMeans}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{distMeans} \PYG{o}{=}\PYG{n}{distEclud}\PYG{p}{,} \PYG{n}{createCent} \PYG{o}{=} \PYG{n}{randCent}\PYG{p}{):}
+      \PYG{n}{m} \PYG{o}{=} \PYG{n}{shape}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{)[}\PYG{l+m+mi}{0}\PYG{p}{]}
+      \PYG{n}{clusterAssment} \PYG{o}{=} \PYG{n}{mat}\PYG{p}{(}\PYG{n}{zeros}\PYG{p}{((}\PYG{n}{m}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)))}
+      \PYG{n}{centroids} \PYG{o}{=} \PYG{n}{createCent}\PYG{p}{(}\PYG{n}{dataSet}\PYG{p}{,} \PYG{n}{k}\PYG{p}{)}
+      \PYG{n}{clusterChanged} \PYG{o}{=} \PYG{k+kc}{True}
+      \PYG{k}{while} \PYG{n}{clusterChanged}\PYG{p}{:}
+          \PYG{n}{clusterChanged} \PYG{o}{=} \PYG{k+kc}{False}\PYG{p}{;}
+          \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+              \PYG{n}{minDist} \PYG{o}{=} \PYG{n}{inf}\PYG{p}{;} \PYG{n}{minIndex} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+              \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{k}\PYG{p}{):}
+                  \PYG{n}{distJI} \PYG{o}{=} \PYG{n}{distMeans}\PYG{p}{(}\PYG{n}{centroids}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,:],} \PYG{n}{dataSet}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:])}
+                  \PYG{k}{if} \PYG{n}{distJI} \PYG{o}{\PYGZlt{}} \PYG{n}{minDist}\PYG{p}{:}
+                      \PYG{n}{minDist} \PYG{o}{=} \PYG{n}{distJI}\PYG{p}{;} \PYG{n}{minIndex} \PYG{o}{=} \PYG{n}{j}
+              \PYG{k}{if} \PYG{n}{clusterAssment}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{minIndex}\PYG{p}{:}
+                  \PYG{n}{clusterChanged} \PYG{o}{=} \PYG{k+kc}{True}
+              \PYG{n}{clusterAssment}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,:]} \PYG{o}{=} \PYG{n}{minIndex}\PYG{p}{,}\PYG{n}{minDist}\PYG{o}{**}\PYG{l+m+mi}{2}
+          \PYG{k}{for} \PYG{n}{cent} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{k}\PYG{p}{):}
+              \PYG{n}{ptsInClust} \PYG{o}{=} \PYG{n}{dataSet}\PYG{p}{[}\PYG{n}{nonzero}\PYG{p}{(}\PYG{n}{clusterAssment}\PYG{p}{[:,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{A} \PYG{o}{==} \PYG{n}{cent}\PYG{p}{)[}\PYG{l+m+mi}{0}\PYG{p}{]]}
+              \PYG{n}{centroids}\PYG{p}{[}\PYG{n}{cent}\PYG{p}{,:]} \PYG{o}{=} \PYG{n}{mean}\PYG{p}{(}\PYG{n}{ptsInClust}\PYG{p}{,} \PYG{n}{axis} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}
+  \PYG{k}{return} \PYG{n}{centroids}\PYG{p}{,} \PYG{n}{clusterAssment}
+\end{Verbatim}

@@ -1,0 +1,23 @@
+\documentclass[../mcmpaper]{subfiles}
+\begin{document}
+	\section{Reasonable Assumptions}
+	To simplify the problem, we make the following basic assumptions, each of which is properly justified.
+    \begin{itemize}[nosep]
+        \item \textbf{Assumption 1}: Data preprocessing is effective.
+        \begin{itemize}[label=, leftmargin=0pt, itemindent=\parindent]
+            \item \textbf{Justification}: Data preprocessing has eliminated outliers as much as possible, and ensuring the effectiveness of preprocessing is to ensure the accuracy of the model and the reliability of the results.
+        \end{itemize}
+            \item \textbf{Assumption 2}: Customers read reviews of this product carefully before purchasing.
+            \begin{itemize}[label=, leftmargin=0pt, itemindent=\parindent]
+                \item \textbf{Justification}: Make sure that product reviews have an impact on whether or not customers buy the product, as well as giving review stars and specific reviews.
+            \end{itemize}
+        \item \textbf{Assumption 3}: Data files are trusted.
+        \begin{itemize}[label=, leftmargin=0pt, itemindent=\parindent]
+            \item \textbf{Justification}: Malicious comments from customers or other spam will affect the model and results, but we have no way of knowing the malicious comments in the data file.
+        \end{itemize}
+    \end{itemize}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mcmpaper"
+%%% End:

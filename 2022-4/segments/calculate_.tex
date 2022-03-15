@@ -1,0 +1,53 @@
+\documentclass[../mcmpaper]{subfiles}
+\begin{document}
+\section{Notations}
+% \begin{table}[!ht]
+% 	\centering
+%     \caption{Notations used in this paper}
+%     \label{tab:3.1}
+% 	\begin{tblr}{
+% 	        width=\linewidth,
+%             colspec={X[-1, c]XX[6, c]},
+%             hline{1, Z} = {2pt, solid}, 
+%             hline{2} = {solid}
+%         }
+%         Symblo && Description\\
+%         helpful\_ratio && Likelihood of this review being a helpful review\\
+%         $\beta_i$ && Topic $i$\\
+%         $W_{j, n}$ && The nth word in document $j$\\
+%         $Z_{j, n}$ && The topic to which the nth word in document $j$ belongs\\
+%         $\eta$ && Hyperparameters for topic distributions\\
+%         $\alpha$ && Hyperparameters for document topic distribution\\
+%         $S$ && Satisfaction rate\\
+%         $R$ && Reputation rate\\
+%     \end{tblr}
+% {\raggedright Note: Table 1 does not list all symbols, the meaning of the symbol is subject to the use of the symbol.}
+% \end{table}
+\begin{minipage}{\linewidth}
+    \begin{threeparttable}[b]
+    	\begin{tblr}{
+	        width=\linewidth,
+            colspec={X[-1, c]XX[6, c]},
+            hline{1, Z} = {2pt, solid}, 
+            hline{2} = {solid}
+        }
+        Symblo && Description\\
+        helpful\_ratio && Likelihood of this review being a helpful review\\
+        $\beta_i$ && Topic $i$\\
+        $W_{j, n}$ && The nth word in document $j$\\
+        $Z_{j, n}$ && The topic to which the nth word in document $j$ belongs\\
+        $\eta$ && Hyperparameters for topic distributions\\
+        $\alpha$ && Hyperparameters for document topic distribution\\
+        $S$ && Satisfaction rate\\
+        $R$ && Reputation rate\\
+    \end{tblr}
+        \begin{tablenotes}[flushleft]
+        	\item Note: The above table does not list all symbols, the meaning of the symbol is subject to the use of the symbol.
+        \end{tablenotes}
+    \end{threeparttable}
+\end{minipage}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mcmpaper"
+%%% End:

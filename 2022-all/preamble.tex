@@ -1,0 +1,130 @@
+%%=============setting，设置自己的队号和选题============
+\gdef\MCMcontrol{2019057552}%队号
+\newcommand{\problem}{C}%选题
+
+\newcommand{\control}{\MCMcontrol}
+\newcommand{\team}{Team \#\ \MCMcontrol}
+\newcommand{\headset}{{\the\year}\\MCM/ICM\\Summary Sheet}
+
+%==========定义摘要，摘要的标题可自定义===================
+\renewcommand{\abstractname}{\bfseries\Large Summary}
+\newcommand\keywords[1]{%
+	\begingroup
+	\par
+	\noindent\textbf{Keywords:} #1\par
+	\endgroup
+}
+
+%=========设置主要、次要文件===============
+%======== The new package ==============
+% for many files 
+\usepackage{subfiles}
+% for more useful list environment
+\usepackage{enumitem}
+% for convenient table
+\usepackage{tabularray}
+% for subfigure
+\usepackage{subfigure}
+% set for paragraph indent first
+\usepackage{indentfirst}
+% use for figure, sometimes it can be useful
+% \usepackage[section]{placeins}
+% use for table note
+\usepackage[para]{threeparttable}
+% use for paragraph
+\usepackage[explicit, compact]{titlesec}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{#1}
+\titlespacing*{\paragraph}{0pt}{1.25ex plus 1ex minus .2ex}{0.1em}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+% use subparagraph for step
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{\bfseries Step~#1:}
+\titlespacing*{\subparagraph}{\parindent}{0pt}{0.5em}
+% use for caption
+\usepackage{caption}
+% center the table and figure title
+\captionsetup[figure]{justification=centering}
+\captionsetup[table]{justification=centering}
+% for page, no meaning most of the time
+\usepackage{geometry}
+\geometry{left=5em,right=5em,top=4em,bottom=5em}
+% for toc, conflict with the subfigure, so you should add package option subfigure
+\usepackage[subfigure]{tocloft}
+% for center contents
+\renewcommand{\cfttoctitlefont}{
+  \hfill\Large\bfseries
+}
+\renewcommand{\cftaftertoctitle}{
+  \hfill
+}
+\renewcommand{\cftaftertoctitleskip}{2.5em}
+\setlength{\cftbeforesecskip}{0.7em}
+\setlength{\cftbeforesubsecskip}{0.45em}
+% for appendix
+\usepackage[toc, page, title, titletoc, header]{appendix}
+% for graphics
+\usepackage{graphicx}
+% add the path of image
+\graphicspath{{figures/}{img/}}
+% don't know
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Example}[Theorem]{Example}
+
+
+%==========设置代码格式===================
+\usepackage{xcolor}
+% for code input
+\usepackage{minted}
+\definecolor{pybg}{gray}{0.95}
+\definecolor{pyrbg}{RGB}{0,255,0}
+\makeatletter
+\renewenvironment{minted@colorbg}[1]{
+\setlength{\fboxsep}{\z@}
+\def\minted@bgcol{#1}
+\noindent
+\begin{lrbox}{\minted@bgbox}
+\begin{minipage}{\linewidth}}
+{\end{minipage}
+\end{lrbox}%
+\colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}}
+\makeatother
+\setminted[python]{
+  breaklines=true,
+  bgcolor=pybg,
+  linenos=true,
+  frame=lines,
+  rulecolor=pyrbg,
+  framesep=0.5em,
+  framerule=1pt,
+  numbersep=6pt
+}
+\renewcommand{\theFancyVerbLine}{\textcolor[rgb]{0.5,0.5,1.0}{\footnotesize\arabic{FancyVerbLine}}}
+% for algorithms
+\usepackage[ruled,vlined]{algorithm2e}
+
+% for attach file
+\usepackage[color=red]{attachfile2}
+%==========设置页眉格式===================
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headwidth}{\linewidth}
+\lhead{\small\sffamily \team}
+\rhead{\small\sffamily Page \thepage\ of \pageref{LastPage}}
+\setlength\parskip{.5\baselineskip}
+
+\usepackage{hyperref}
+\usepackage{mathptmx}% newtxtext
+\usepackage{lipsum}
+\title{The \LaTeX{} Template for MCM Version 1}
+\author{\small \href{http://www.latexstudio.net/}
+	{\includegraphics[width=7cm]{mcmthesis-logo}}}
+\date{\today}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "mcmpaper"
+%%% End:

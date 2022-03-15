@@ -1,0 +1,256 @@
+%% -----------------------------------
+%%
+%%
+%% Copyright (C)
+%%     2022     by latexstudio.net
+%%
+%%
+\documentclass[12pt]{article}
+%% preamble
+\makeatletter
+\def\input@path{{/home/sayno/mcm/2022-4/}}
+\makeatother
+\input{./preamble}
+%=========设置主要、次要文件===============
+%======== The new package =============
+\usepackage{subfiles}
+\usepackage{enumitem}
+\usepackage{tabularray}
+\usepackage{subfigure}
+% set for paragraph
+\usepackage{indentfirst}
+% use for figure
+% \usepackage[section]{placeins}
+% use for table
+\usepackage[para]{threeparttable}
+% use for paragraph
+\usepackage[explicit, compact]{titlesec}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{#1}
+\titlespacing*{\paragraph}{0pt}{1.25ex plus 1ex minus .2ex}{0.1em}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+% use subparagraph for step
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{\bfseries Step~#1:}
+\titlespacing*{\subparagraph}{\parindent}{0pt}{0.5em}
+% use for caption
+\usepackage{caption} \captionsetup[figure]{justification=centering}
+\captionsetup[table]{justification=centering}
+% for page
+\usepackage{geometry}
+\geometry{left=5em,right=5em,top=5em,bottom=5em}
+% for toc
+\usepackage[subfigure]{tocloft}
+% for center contents
+\renewcommand{\cfttoctitlefont}{
+  \hfill\Large\bfseries
+}
+\renewcommand{\cftaftertoctitle}{
+  \hfill
+}
+\renewcommand{\cftaftertoctitleskip}{3em}
+\setlength{\cftbeforesecskip}{0.2em}
+\setlength{\cftbeforesubsecskip}{0.1em}
+\usepackage[color=red]{attachfile2}
+\setminted[python]{breaklines=true}
+\begin{document}
+	%% 摘要环境
+	\subfile{./segments/abstract_}
+	\newpage
+	\tableofcontents
+    \newpage
+	
+	
+	%==========设置正文格式===================
+	
+	\subfile{./segments/introduction_}
+	
+	% 分析
+	\subfile{./segments/analysis_}
+	
+	% 计算
+	\subfile{./segments/calculate_}
+	
+	% 模型结果
+	\subfile{./segments/model_result}
+	
+	% %
+	% \subfile{./segments/validate_model}
+	
+	% % 总结
+	% \subfile{./segments/conclusion_}
+	
+	
+	% \section{A Summary}
+	% \lipsum[6]
+	
+	% % 模型评估
+	% \subfile{./segments/evaluate_mode}
+	
+	
+	% % 模型的优点和缺点
+	% \subfile{./segments/strengths_weaknesses}
+    \newpage
+    \addtocounter{section}{1}
+	\begin{thebibliography}{99}\addcontentsline{toc}{section}{\bfseries \thesection\quad Reference}
+		\bibitem{1} Zou Xiaohui, Sun Jing. LDA Topic Model[J]. Intelligent Computer and Application, 2014(5). DOI:10.3969/j.issn.2095-2163.2014.05.031.
+		\bibitem{2} Tong Z, Zhang H. A text mining research based on LDA topic modelling[C]//International Conference on Computer Science, Engineering and Information Technology. 2016: 201-210.
+		\bibitem{3}  Zhou Lian. The working principle and application of Word2vec[J]. Science and Technology Information Development and Economy, 2015(2):145-148. DOI:10.3969/j.issn.1005-6033.2015.02.061.
+        \bibitem{4} Yang Junchuang, Zhao Chao. Review of K-Means Clustering Algorithm Research [J]. Computer Engineering and Applications, 2019,55(23):7-14,63. DOI:10.3778/j.issn.1002-8331.1908-0347 .
+        \bibitem{5} Wei Jie, Li Quanming, Chu Yanyu, et al. Optimization of room-and-pillar stope layout scheme based on EWM-TOPSIS model [J]. Journal of Hefei University of Technology (Natural Science Edition), 2021,44(5):691-695. DOI :10.3969/j.issn.1003-5060.2021.05.020.
+        \bibitem{6} Ji Hua. Support Vector Machine (SVM) Learning Method Based on Statistical Learning Theory[J]. Science Times, 2006(11):33-37.
+        \bibitem{7} Peng Yue. Introduction of ARIMA Model[J]. Electronic World, 2014(10):259-259. DOI:10.3969/j.issn.1003-0522.2014.10.252.
+        \bibitem{8} Liu Dongyang, Liu En. Improvement of Apriori Algorithm[J]. Science Technology and Engineering, 2010,10(16):4028-4031. DOI:10.3969/j.issn.1671-1815.2010.16.054.
+	\end{thebibliography}
+	\newpage
+	\begin{appendices}
+    Here are simulation programmes we used in our model as follow. Just show the main code, other code in the file shown below.
+    \begin{enumerate}[topsep=0pt]
+        \item Data Visualization \textattachfile{./code/Mercer-Data-visualization.py}{Mercer-Data-visualization.py}
+        \item K-Means Clustering \textattachfile{./code/Mercer-Kmeans-clustering.py}{Mercer-Kmeans-clustering.py}
+        \item Data Processing \textattachfile{./code/Mercer-Data-processing.py}{Mercer-Data-processing.py}
+        \item LDA \textattachfile{./code/Mercer-LDA.py}{Mercer-LDA.py}
+    \end{enumerate}
+		\section{K-Means Clustering Algorithm}
+        \begin{minted}{python}
+  from numpy import *
+  import matplotlib.pyplot as plt
+
+  def loadDataSet(fileName):  
+      dataMat = []              
+      fr = open(fileName)
+      for line in fr.readlines():
+          curLine = line.strip().split('\t')
+          fltLine = map(float, curLine) 
+          dataMat.append(fltLine)
+      return dataMat
+
+  def distEclud(vecA, vecB):
+      return sqrt(sum(power(vecA - vecB, 2)))
+
+  def randCent(dataSet, k):
+      n = shape(dataSet)[1]
+      centroids = mat(zeros((k,n)))   
+      for j in range(n):
+          minJ = min(dataSet[:,j])
+          maxJ = max(dataSet[:,j])
+          rangeJ = float(maxJ - minJ)
+          centroids[:,j] = minJ + rangeJ * random.rand(k, 1)
+      return centroids
+
+  def kMeans(dataSet, k, distMeans =distEclud, createCent = randCent):
+      m = shape(dataSet)[0]  
+      clusterAssment = mat(zeros((m,2)))
+      centroids = createCent(dataSet, k)
+      clusterChanged = True   
+      while clusterChanged:
+          clusterChanged = False;
+          for i in range(m): 
+              minDist = inf; minIndex = -1;
+              for j in range(k):
+                  distJI = distMeans(centroids[j,:], dataSet[i,:])
+                  if distJI < minDist:
+                      minDist = distJI; minIndex = j 
+              if clusterAssment[i,0] != minIndex:
+                  clusterChanged = True  
+              clusterAssment[i,:] = minIndex,minDist**2   
+          for cent in range(k):   
+              ptsInClust = dataSet[nonzero(clusterAssment[:,0].A == cent)[0]]   
+              centroids[cent,:] = mean(ptsInClust, axis = 0)  
+  return centroids, clusterAssment
+          \end{minted}
+          \section{Data Preprocessing}
+          \par
+          \begin{minted}{python}
+  import seaborn as sns
+  sns.axes_style("darkgrid")
+  explode =[0,0,0,0.3,0]
+  labels =['one stars','two stars','three stars','four stars','five stars']
+  colors = ['salmon','tan','darkorange','skyblue','khaki']
+  patches,l_text,p_text=plt.pie(x=pacifier_stars_ratio,labels=labels,
+          explode=explode,colors=colors, autopct='%.3f%%',pctdistance=0.4, 
+          labeldistance=0.7,startangle=180,center=(4,4),radius=3.8,counterclock= False,
+
+  for t in p_text:
+      t.set_size(17)
+
+  for t in l_text:
+      t.set_size(17)
+  plt.xticks(())
+
+  plt.yticks(())
+  plt.title('pacifier_stars_ratio',y=-1.18,fontsize=18)
+  plt.legend(patches,
+             labels,
+             fontsize=18,
+             loc="center left",
+             bbox_to_anchor=(2, 0, 1, -1))
+
+  plt.show()
+
+
+  from wordcloud import WordCloud
+  import matplotlib.pyplot as plt
+  from PIL import Image
+  wordcloud = WordCloud(mask=mask,background_color='#FFFFFF',scale=1,).generate(a)
+  image_produce = wordcloud.to_image()
+  wordcloud.to_file("new_wordcloud.jpg")
+  image_produce.show()
+  \end{minted}
+  \section{LDA}
+  \begin{minted}{python}
+  import pandas as pd
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  hair_dryer_data = pd.read_excel('hair_dryer.xlsx')
+  microwave_data = pd.read_excel('microwave.xlsx')
+  pacifier_data = pd.read_excel('pacifier.xlsx')
+
+  import re
+
+
+  #
+  def clean_text(text):
+      text = text.replace("<br />", " ")
+      text = text.replace("<br", " ")
+      text = re.sub(r'[^\x00-\x7F]+', ' ', text)
+      text = re.sub(r"([.,!:?()])", r" \1 ", text)
+      text = re.sub(r"\s{2,}", " ", text)
+      text = text.replace("-", " ")
+      return text
+
+
+  hair_dryer_data['review_body'].apply(clean_text)
+
+  import nltk
+  from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+  from sklearn.decomposition import LatentDirichletAllocation
+
+  n_features = 1000
+  tf_vectorizer = CountVectorizer(strip_accents='unicode',
+                                  max_features=n_features,
+                                  stop_words='english',
+                                  max_df=0.5,
+                                  min_df=10)
+  tf = tf_vectorizer.fit_transform(microwave_data['review_headline'])
+
+  lda = LatentDirichletAllocation(n_components=15,
+                                  max_iter=150,
+                                  learning_method='online',
+                                  learning_offset=50, random_state=0)
+  lda.fit(tf)
+  \end{minted}
+        % \lstinputlisting[language=Python]{./code/Mercer-Kmeans-clustering2.py}
+        % \lstinputlisting[language=Python]{./code/Mercer-LDA2.py}
+        % \lstinputlisting[language=Python]{./code/Mercer-Data-visualization2.py}
+        % \lstinputlisting[language=Python]{./code/Mercer-Data-processing2.py}
+	\end{appendices}
+	
+	
+	
+	
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

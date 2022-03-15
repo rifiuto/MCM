@@ -1,0 +1,51 @@
+\documentclass[../mcmpaper]{subfiles}
+%==========Summary sheet 格式===================
+\begin{document}
+	\thispagestyle{empty}
+	\begingroup
+	\setlength{\parindent}{0pt}
+	\begin{minipage}[t]{0.33\linewidth}
+		\bfseries\centering%
+		Problem Chosen\\[0.7pc]
+		{\Huge\textbf{\problem}}\\[2.8pc]
+	\end{minipage}%
+	\begin{minipage}[t]{0.33\linewidth}
+		\centering%
+		\textbf{\headset}%
+	\end{minipage}%
+	\begin{minipage}[t]{0.33\linewidth}
+		\centering\bfseries%
+		Team Control Number\\[0.7pc]
+		{\Huge\textbf{\MCMcontrol}}\\[2.8pc]
+	\end{minipage}\par
+	\rule{\linewidth}{0.8pt}\par
+	\par
+	%\textbf{\headset}%
+	\endgroup
+	
+	\medskip
+    \begingroup
+    \centering\bfseries\Large
+    Fight for Washington State: Can Artificial Intelligence Beat the Asian Giant Hornet?
+    \endgroup
+	\begin{abstract}{Summary}
+    % use for change the distance of the paragraph
+    \setlength\parskip{0.8em plus 0.1em minus 0.2em}
+    Recently, the Asian giant hornet has been observed in Washington State, which may cause damage to the ecosystem in the future. Therefore, the Washington State Department of Agri- culture (WSDA) has provided large amounts of observations on the species, hoping to get our assistance.
+    \par
+    For problem 1, we propose two metrics: \textbf{the resource competition coefficient} and \textbf{the environmental friendliness} to construct\textbf{ a time-step difference equation}, and simulate the population dispersal of the Asian giant hornet. We predict the distribution of nests in Washington State within 10 years, and gain the range of activities of an Asian giant hornet by adding noise. The results show that if no measures are taken against the spread of Asian giant hornets, the number of the species will show an approximate \textbf{exponential growth} at the initial stage in Washington State. To evaluate the accuracy of the model, we use \textbf{Logistic Growth} Model to test the accuracy of the model. The loss is 0.076, and the fastest growing year is the seventh year.These results indicate that we need to control the number of nests early.
+    \par
+    In problem 2, we divide it into feature extraction and image classification. For the former, we establish a model based on \textbf{auto-encoder} to condense images information, of which the minimum testing loss dips to 0.0274. For the latter, we build three models, the Binary Logistic Regression, the Support Vector Machine, and \textbf{the Convolutional Neural Network (CNN)}. The highest accuracy of the three models on the testing set is 0.5303, 0.5758, and 0.8030 respectively, so we choose CNN as our classification model. Finally, we summarize the features of negative images from three aspects: \textbf{species characteristics, subject definition and background softness}.
+    \par
+    In terms of problem 3, we conduct \textbf{Agglomerative Clustering} according to the latitude and longitude of each sighting with unverified or unprocessed status, and divide them into \textbf{5 classes}. Then we define the priority of a region based on the positive probabilities of input images in this area. Through analysis, we find that \textbf{Seattle is located in the center of the highest probability area}.
+    \par
+    With regard to problem 4, we update the model with diffi erent intervals to find optimal update time interval. Selected indicators include the testing loss of auto-encoder and the accuracy of CNN in testing dataset. The optimal time interval for updating models is defined as \textbf{the abscissa corresponding to the extremum of the numerical derivative of the time-varying indicators}. Finally, we get the following conclusions: the auto-encoder needs to be updated \textbf{every four months}, and the CNN needs to be updated \textbf{every three months}.
+    \par
+    As for problem 5, we design a number of variables based on observational data to characterize changes in the number of nests. We eliminate the inﬂuence of the image recognition model based on \textbf{Bayesian inference}. When \textbf{$\mathit{K}$ converges to 0}, we think that the pest has been eradicate. Last but not least, we summarize the suggestions and write a memorandum for the WSDA, to assist relevant departments in biological control.
+	\keywords{Time-Step Diffierence Equation, Auto-Encoder, Convolutional Neural Network, Agglomerative Clustering}
+	\end{abstract}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mcmpaper"
+%%% End:

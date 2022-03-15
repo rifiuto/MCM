@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k}{as} \PYG{n+nn}{pd}
+  \PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+  \PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+
+  \PYG{n}{hair\PYGZus{}dryer\PYGZus{}data} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}excel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}hair\PYGZus{}dryer.xlsx\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{microwave\PYGZus{}data} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}excel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}microwave.xlsx\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{pacifier\PYGZus{}data} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{read\PYGZus{}excel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}pacifier.xlsx\PYGZsq{}}\PYG{p}{)}
+
+  \PYG{k+kn}{import} \PYG{n+nn}{re}
+
+
+  \PYG{c+c1}{\PYGZsh{}}
+  \PYG{k}{def} \PYG{n+nf}{clean\PYGZus{}text}\PYG{p}{(}\PYG{n}{text}\PYG{p}{):}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{text}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}br /\PYGZgt{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{text}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}br\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}[\PYGZca{}\PYGZbs{}x00\PYGZhy{}\PYGZbs{}x7F]+\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{,} \PYG{n}{text}\PYG{p}{)}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}([.,!:?()])\PYGZdq{}}\PYG{p}{,} \PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{} \PYGZbs{}1 \PYGZdq{}}\PYG{p}{,} \PYG{n}{text}\PYG{p}{)}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{sub}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s2}{\PYGZdq{}\PYGZbs{}s\PYGZob{}2,\PYGZcb{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{p}{,} \PYG{n}{text}\PYG{p}{)}
+      \PYG{n}{text} \PYG{o}{=} \PYG{n}{text}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+      \PYG{k}{return} \PYG{n}{text}
+
+
+  \PYG{n}{hair\PYGZus{}dryer\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}review\PYGZus{}body\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{apply}\PYG{p}{(}\PYG{n}{clean\PYGZus{}text}\PYG{p}{)}
+
+  \PYG{k+kn}{import} \PYG{n+nn}{nltk}
+  \PYG{k+kn}{from} \PYG{n+nn}{sklearn.feature\PYGZus{}extraction.text} \PYG{k+kn}{import} \PYG{n}{TfidfVectorizer}\PYG{p}{,} \PYG{n}{CountVectorizer}
+  \PYG{k+kn}{from} \PYG{n+nn}{sklearn.decomposition} \PYG{k+kn}{import} \PYG{n}{LatentDirichletAllocation}
+
+  \PYG{n}{n\PYGZus{}features} \PYG{o}{=} \PYG{l+m+mi}{1000}
+  \PYG{n}{tf\PYGZus{}vectorizer} \PYG{o}{=} \PYG{n}{CountVectorizer}\PYG{p}{(}\PYG{n}{strip\PYGZus{}accents}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}unicode\PYGZsq{}}\PYG{p}{,}
+                                  \PYG{n}{max\PYGZus{}features}\PYG{o}{=}\PYG{n}{n\PYGZus{}features}\PYG{p}{,}
+                                  \PYG{n}{stop\PYGZus{}words}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}english\PYGZsq{}}\PYG{p}{,}
+                                  \PYG{n}{max\PYGZus{}df}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,}
+                                  \PYG{n}{min\PYGZus{}df}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+  \PYG{n}{tf} \PYG{o}{=} \PYG{n}{tf\PYGZus{}vectorizer}\PYG{o}{.}\PYG{n}{fit\PYGZus{}transform}\PYG{p}{(}\PYG{n}{microwave\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}review\PYGZus{}headline\PYGZsq{}}\PYG{p}{])}
+
+  \PYG{n}{lda} \PYG{o}{=} \PYG{n}{LatentDirichletAllocation}\PYG{p}{(}\PYG{n}{n\PYGZus{}components}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{,}
+                                  \PYG{n}{max\PYGZus{}iter}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
+                                  \PYG{n}{learning\PYGZus{}method}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}online\PYGZsq{}}\PYG{p}{,}
+                                  \PYG{n}{learning\PYGZus{}offset}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+  \PYG{n}{lda}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{tf}\PYG{p}{)}
+\end{Verbatim}

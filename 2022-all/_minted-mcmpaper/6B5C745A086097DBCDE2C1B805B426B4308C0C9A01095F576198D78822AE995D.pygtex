@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{csv}
+\PYG{k+kn}{import} \PYG{n+nn}{pymysql}
+\PYG{c+c1}{\PYGZsh{} with open(\PYGZdq{}players\PYGZus{}stats3.csv\PYGZdq{}, \PYGZdq{}r\PYGZdq{}) as file:}
+\PYG{c+c1}{\PYGZsh{}     reader = csv.reader(file)}
+\PYG{c+c1}{\PYGZsh{}     next(reader)}
+\PYG{c+c1}{\PYGZsh{}     for i in reader:}
+\PYG{c+c1}{\PYGZsh{}         print(i)}
+\PYG{n}{db} \PYG{o}{=} \PYG{n}{pymysql}\PYG{o}{.}\PYG{n}{connect}\PYG{p}{(}\PYG{n}{host}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}localhost\PYGZdq{}}\PYG{p}{,}
+                     \PYG{n}{user}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}root\PYGZdq{}}\PYG{p}{,}
+                     \PYG{n}{password}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}271xufei.\PYGZdq{}}\PYG{p}{,}
+                     \PYG{n}{db}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}test\PYGZdq{}}\PYG{p}{,)}
+\PYG{n}{cursor} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{cursor}\PYG{p}{()}
+\PYG{n}{cursor}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}show tables\PYGZdq{}}\PYG{p}{);}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{cursor}\PYG{o}{.}\PYG{n}{fetchall}\PYG{p}{())}
+\PYG{n}{cursor}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}create table if not exists hh(\PYGZdq{}}
+               \PYG{l+s+s2}{\PYGZdq{}id int,\PYGZdq{}}
+               \PYG{l+s+s2}{\PYGZdq{}name varchar(4))\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{cursor}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}insert table hh values(}\PYG{l+s+si}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, }\PYG{l+s+si}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}chae\PYGZsq{}}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{)\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} with open(\PYGZdq{}players\PYGZus{}stats3.csv\PYGZdq{}, \PYGZdq{}r\PYGZdq{}) as file:}
+\PYG{c+c1}{\PYGZsh{}     teams = \PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{\PYGZsh{}     reader = csv.DictReader(file)}
+\PYG{c+c1}{\PYGZsh{}     for item in reader:}
+\PYG{c+c1}{\PYGZsh{}         team = item[\PYGZsq{}Team\PYGZsq{}]}
+\PYG{c+c1}{\PYGZsh{}         \PYGZsh{} if team in teams:}
+\PYG{c+c1}{\PYGZsh{}         \PYGZsh{}     teams[team] += 1}
+\PYG{c+c1}{\PYGZsh{}         \PYGZsh{} else:}
+\PYG{c+c1}{\PYGZsh{}         \PYGZsh{}     teams[team] = 1}
+\PYG{c+c1}{\PYGZsh{}         if team not in teams:}
+\PYG{c+c1}{\PYGZsh{}             teams[team] = 0}
+\PYG{c+c1}{\PYGZsh{}         teams[team] += 1}
+\PYG{c+c1}{\PYGZsh{}     for team in sorted(teams, key=lambda x: teams[x], reverse=True):}
+\PYG{c+c1}{\PYGZsh{}         print(team, teams[team])}
+\PYG{c+c1}{\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} print(\PYGZdq{}b\PYGZdq{} in \PYGZob{}\PYGZdq{}a\PYGZdq{}: \PYGZdq{}b\PYGZdq{}\PYGZcb{})}
+\PYG{c+c1}{\PYGZsh{} print(\PYGZdq{}a\PYGZdq{} in \PYGZob{}\PYGZdq{}a\PYGZdq{}: \PYGZdq{}b\PYGZdq{}\PYGZcb{})}
+\end{Verbatim}

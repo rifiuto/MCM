@@ -1,0 +1,98 @@
+%% -----------------------------------
+%%
+%%
+%% Copyright (C)
+%%     2022     by latexstudio.net
+%%
+%%
+\documentclass[12pt]{article}
+%% 导言区
+\input{preamble}
+%=========设置主要、次要文件===============
+\usepackage{subfiles}
+\usepackage{enumitem}
+\setlength{\parskip}{0.5em}
+\usepackage{tabularray}
+% bind figure to section
+\counterwithin{figure}{section}
+\counterwithin{equation}{subsection}
+\counterwithin{table}{subsection}
+% use for non-float environment have the caption
+\usepackage{caption}
+\captionsetup[figure]{justification=centering}
+% indent the first
+\usepackage{indentfirst}
+% for rounded numer
+\usepackage{pifont}
+% indent for abstract
+
+\begin{document}
+	
+	%% 摘要环境
+	\subfile{./segments/abstract_}
+	\newpage
+	\tableofcontents
+	
+	
+	%==========设置正文格式===================
+	
+	\subfile{./segments/introduction_} %
+	
+	% 分析
+	\subfile{./segments/analysis_}
+	
+	% 计算
+	\subfile{./segments/calculate_}
+	
+	% 模型结果
+	\subfile{./segments/model_result.tex} %
+	
+	%
+	\subfile{./segments/validate_model}
+	
+	% 总结
+	\subfile{./segments/conclusion_}
+	
+	
+	% \section{A Summary}
+	% \lipsum[6]
+	
+	% % 模型评估
+	% \subfile{./segments/evaluate_mode}
+	
+	
+	% % 模型的优点和缺点
+	% \subfile{./segments/strengths_weaknesses}
+	
+	
+	
+	\addtocounter{section}{1}
+	\begin{thebibliography}{99}\addcontentsline{toc}{section}{\bfseries \thesection\quad Reference}
+		\bibitem{1} Everett M.Rogers. Diffusion of Innovations. New York:The Free Press, 1983.
+		\bibitem{2} Duan Peng. Theory and Application of Discrete Choice Model [D]. Nankai University, 2010.
+		Addison-Wesley Publishing Company, 1986.
+		\bibitem{3} Feng Jiandong, Wang Hao. Investigation and Analysis on the Characteristics and Travel Willingness of Bus Passengers in Zhengzhou City [J]. Transportation Technology and Economy, 2015, 17(04): 64-70.
+	\end{thebibliography}
+	
+	
+	
+	% \begin{appendices}
+	% 	\section{First appendix}
+	% 	\lipsum[13]
+	% 	Here are simulation programmes we used in our model as follow.\\
+	% 	\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
+	% 	\lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
+	% 	\section{Second appendix}
+	% 	some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
+	% 	\lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+	% \end{appendices}
+	
+	
+	
+	
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,79 @@
+%% -----------------------------------
+%%
+%%
+%% Copyright (C)
+%%     2022     by latexstudio.net
+%%
+%%
+\documentclass[12pt]{article}
+%% 导言区
+\input{preamble}
+%=========设置主要、次要文件===============
+\usepackage{subfiles}
+\begin{document}
+
+	%% 摘要环境
+	\subfile{./segments/abstract_}
+	\newpage
+	\tableofcontents
+	
+	
+	%==========设置正文格式===================
+	
+	\subfile{./segments/introduction_}
+	
+	% 分析
+	\subfile{./segments/analysis_}
+	
+	% 计算
+	\subfile{./segments/calculate_}
+	
+	% 模型结果
+	\subfile{./segments/model_result}
+	
+	%
+	\subfile{./segments/validate_model}
+	
+	% 总结
+	\subfile{./segments/conclusion_}
+	
+	
+	\section{A Summary}
+	\lipsum[6]
+	
+	% 模型评估
+	\subfile{./segments/evaluate_mode}
+	
+	
+	% 模型的优点和缺点
+	\subfile{./segments/strengths_weaknesses}
+	
+	
+	
+	
+	\begin{thebibliography}{99}
+		\bibitem{1} D.~E. KNUTH   The \TeX{}book  the American
+		Mathematical Society and Addison-Wesley
+		Publishing Company , 1984-1986.
+		\bibitem{2}Lamport, Leslie,  \LaTeX{}: `` A Document Preparation System '',
+		Addison-Wesley Publishing Company, 1986.
+		\bibitem{3}\url{http://www.latexstudio.net/}
+	\end{thebibliography}
+	
+	
+	
+	\begin{appendices}
+		\section{First appendix}
+		\lipsum[13]
+		Here are simulation programmes we used in our model as follow.\\
+		\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
+		\lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
+		\section{Second appendix}
+		some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
+		\lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+	\end{appendices}
+	
+	
+	
+	
+\end{document}

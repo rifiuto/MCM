@@ -1,0 +1,82 @@
+%%=============setting，设置自己的队号和选题============
+\gdef\MCMcontrol{2019057552}%队号
+\newcommand{\problem}{C}%选题
+
+\newcommand{\control}{\MCMcontrol}
+\newcommand{\team}{Team \#\ \MCMcontrol}
+\newcommand{\headset}{{\the\year}\\MCM/ICM\\Summary Sheet}
+
+%==========定义摘要，摘要的标题可自定义===================
+\renewenvironment{abstract}[1]{%
+	\small
+	\begin{center}%
+		{\large\bfseries #1\vspace{-.5em}}%
+\end{center}}
+{}
+\newcommand\keywords[1]{%
+	\begingroup
+	\par
+	\noindent\textbf{Keywords:} #1\par
+	\endgroup
+}
+% 
+
+\usepackage[toc, page, title, titletoc, header]{appendix}
+\usepackage{graphicx}
+\graphicspath{{/home/sayno/mcm/2022-4/figures/}}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Example}[Theorem]{Example}
+
+
+%==========设置代码格式===================
+\usepackage{xcolor}
+% \usepackage{listings}
+% \definecolor{grey}{rgb}{0.8,0.8,0.8}
+% \definecolor{darkgreen}{rgb}{0,0.3,0}
+% \definecolor{darkblue}{rgb}{0,0,0.3}
+% \def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
+% \lstset{%
+% 	% numbers=left,
+% 	% numberstyle=\small,%
+% 	showstringspaces=false,
+% 	showspaces=false,%
+% 	tabsize=4,%
+% 	frame=lines,%
+% 	basicstyle={\footnotesize\lstbasicfont},%
+% 	keywordstyle=\color{darkblue}\bfseries,%
+% 	identifierstyle=,%
+% 	commentstyle=\color{darkgreen},%\itshape,%
+% 	stringstyle=\color{black},
+%     inputencoding=utf8
+% }
+% \lstloadlanguages{C,C++,Java,Matlab,Mathematica,Python}
+
+\usepackage{geometry}
+\geometry{a4paper, margin = 1.2in}
+
+%==========设置页眉格式===================
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headwidth}{\linewidth}
+\lhead{\small\sffamily \team}
+\rhead{\small\sffamily Page \thepage\ of \pageref{LastPage}}
+\setlength\parskip{.5\baselineskip}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{mathptmx}% newtxtext
+\usepackage{lipsum}
+\title{The \LaTeX{} Template for MCM Version 1}
+\author{\small \href{http://www.latexstudio.net/}
+	{\includegraphics[width=7cm]{mcmthesis-logo}}}
+\date{\today}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "mcmpaper"
+%%% End:

@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{lipsum}
+%\everymath{\displaystyle}
+\usepackage{xparse}
+\NewDocumentEnvironment{halfequ}{
+  +b
+}{
+  \begin{minipage}{0.5\linewidth}
+  \begin{equation}
+  #1
+}{
+  \end{equation}
+  \end{minipage}
+}
+\begin{document}
+\thispagestyle{empty}
+a$hh$b
+\begin{table}[ht]
+	\begin{tabular}{|p{10em}|l|}\hline
+		This is a test, this is a test, this is a test, this is a test, this is a test, this is a test, this is a test & b\\ \hline
+	\end{tabular}
+	\newline
+	\begin{tabularx}{\linewidth}{|X|l|}\hline
+		This is a test, this is a test, this is a test, this is a test, this is a test, this is a test, this is a test & b\\ \hline
+	\end{tabularx}
+\end{table}
+\section{hello}\label{sec:test}
+This is a test\ref{sec:test}.
+\newpage
+\section{hello}
+\romannumeral255
+\csname\string\TeX\endcsname \csname TeX\endcsname '''a'\thinspace'' '''a'\,'' {`}``a`\,``, \lq\lq\ \lq a\rq\ \rq\rq\ a
+'''b'$\,$'' '''b'\,'' a a b c
+
+\begin{halfequ}
+f(x)=x_{2}
+\end{halfequ}
+\begin{halfequ}
+a=b
+\end{halfequ}
+
+\'{}\TeX\'{}
+
+\begin{equation}
+a=\bigl[\frac{\frac{1}{n}}{\sqrt{n}}\bigr]
+\end{equation}
+\begin{equation}
+	a=\Bigl[\frac{\frac{1}{n}}{\sqrt{n}}\Bigr]
+\end{equation}
+\begin{equation}
+	a=\biggl[\frac{\frac{1}{n}}{\sqrt{n}}\biggr]
+\end{equation}
+\begin{equation}
+	a=\Biggl[\frac{\frac{1}{n}}{\sqrt{n}}\Biggr]
+\end{equation}
+\begin{equation}
+afa
+\end{equation}
+
+\begin{equation}
+a
+\end{equation}
+a\~{\space}bg a\verb*|~|b a\texttildelow b a\textasciitilde b
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+

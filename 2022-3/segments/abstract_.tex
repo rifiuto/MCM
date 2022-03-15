@@ -1,0 +1,51 @@
+\documentclass[../mcmpaper]{subfiles}
+%==========Summary sheet 格式===================
+\begin{document}
+	\thispagestyle{empty}
+	\begingroup
+	\setlength{\parindent}{0pt}
+	\begin{minipage}[t]{0.33\linewidth}
+		\bfseries\centering%
+		Problem Chosen\\[0.7pc]
+		{\Huge\textbf{\problem}}\\[2.8pc]
+	\end{minipage}%
+	\begin{minipage}[t]{0.33\linewidth}
+		\centering%
+		\textbf{\headset}%
+	\end{minipage}%
+	\begin{minipage}[t]{0.33\linewidth}
+		\centering\bfseries%
+		Team Control Number\\[0.7pc]
+		{\Huge\textbf{\MCMcontrol}}\\[2.8pc]
+	\end{minipage}\par
+	\rule{\linewidth}{0.8pt}\par
+	\par
+	%\textbf{\headset}%
+	\endgroup
+    \begin{center}
+    \Large\bfseries The Evaluation scheme about the problem of bus mobile payment
+    \end{center}
+	\begin{abstract}{Summary}
+    This paper reffered enclosure data and searched lots of information materials and data,construct ed correspoding mathematical model,which researched the characteristics of passenger travel behavior, platform profit model and future commercial feasibility.
+    \par
+    For problem one,first, preprocess the data: read in the data, integrate the data, and screen out the abnormal data which are not swiped and not recorded. Then, taking the basic characteristics of travel payment, such as travel time, payment method and passengers as the basic factors, we utilize Pandas for data analysis and data visualization.After analyzing the payment methods within 24 hours, one week and months, and classifying and comparing the preference choice of similar passengers and the payment method selection probability of different passengers at different times,we figure out the payment methods of passengers in the city in different periods: the payment times of bus card are slightly greater than mobile payment, but they are close to 50\%; When facing a variety of payment methods, similar passengers have roughly the same probability of choosing a certain method; When choosing the payment method, passengers will not tend to a certain payment method in a long term.
+    \par
+    For problem two,first we explored the profit model of the third-party payment platform: by consulting relevant materials and combining with the characteristics of public transport, get the four revenue channels of the platform: advertising fee, service fee, handling fee and interest income of precipitation funds, as well as three expenditure channels: early advertising and publicity fee, mobile terminal access fee and fixed expenditure. In the process of modeling, considering the scale coefficients corresponding to variables are different, it is necessary to use piecewise function for linear programming. In addition,due to the implicit function relationship between the number of users, platform influence and amount, which needs further discussion. Through the existing data and materials, predict the unknown data, substitute it into the profit model, and quantitatively calculate and analyze the profit situation:
+
+\begin{equation*}
+\abovedisplayskip=-1em
+\belowdisplayskip=0.1em
+W_{0}=I_{0}-O_{0}=(810+5.28+100+0-600-39.6-85) \times 10^{4}=1906800(\text {yuan} / \text{month})
+\end{equation*}
+\par
+	For problem three,firstly,under the conclusion of question 1, assuming that "one quarter of the buses and subways with mobile payment devices are the most popular lines in the city", the proportion of mobile payment in the vehicles with installed devices is obtained according to the passenger flow data of bus lines. Then, we use the supply and demand relationship to analyze the change trend of the equipment coverage rate, and then use the two models of the innovation diffusion model and the discrete choice model. Under the full coverage condition, the ratio of mobile payment and bus card payment is 86.75\% and 13.25\% respectively. Finally,wecalculated the profit of the third party platform by using the problem two model. The result is about 7.24179 million yuanper month.
+    \par
+    For problem four,firstly access to information to study the business planning and development of the third-party mobile payment platform. Combined with the profit model in this problem for specific analysis. In the light of the mode of cooperation with public transport system, study its profitability and the growth of platform influence. Through the specific data, we can get the corresponding feasible scheme of business planning and development, then get the behavior characteristics, and summarize it into the suggestions of the feasible scheme.
+To sum up,this paper mainly utilized Pandas data analysis module of Python and MATLAB to program,summarized the characteristics of travel payment, established and solved the revenue and expenditure profit model of the third-party platform, predicts the profit status of the third-party platform under the condition of full coverage of mobile payment equipment, and conducted a feasibility study to better solve the problem. 
+    \keywords{data processing and analysis; linear programming; innovation diffusion model; discrete selection model}
+	\end{abstract}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mcmpaper"
+%%% End:
